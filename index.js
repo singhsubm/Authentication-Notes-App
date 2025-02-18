@@ -57,7 +57,7 @@ app.post('/login', async (req, res) => {
         if(!result){
             return res.render('login', {errorMessage: 'Username Or Password was incorrect'});
         }else{
-            const token = jwt.sign({email},'secret')
+            const token = jwt.sign({email},process.env.JWT_TOKEN)
             res.cookie('token', token);
             res.redirect(`/profile`);
         }
