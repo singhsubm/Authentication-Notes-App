@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Profile</title>
+</head>
+<body class="overflow-x-hidden">
+    <div class="bg-zinc-900 text-white w-screen min-h-screen p-10 sm:p-12 lg:p-16 md:p-16">
+        <div class="flex gap-4 items-center mb-6">
+            <div class="w-10 h-10 rounded-md overflow-hidden">
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= user.image %>" alt="">
+            </div>
+            <h1 class="text-xl sm:text-xl md:text-2xl lg:text-3xl">Welcome! <span class="font-semibold"><%= user.fullname %></span> 👋</h1>
+        </div>
+        <form method="post" action="/post" class="mb-2 flex flex-col gap-2 mb-10">
+            <textarea name="content" id="content" placeholder="What's on your mind?" class="resize-none w-full sm:w-full md:w-[70%] lg:w-1/3 outline-none border-zinc-700 border-2 rounded px-2"></textarea>
+            <input class="px-6 py-1 bg-blue-500 cursor-pointer w-fit rounded" type="submit" value="Post">
+        </form>
+
+        <h1 class="text-xl font-semibold mb-4">All Posts</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-2">
+            <% if(user.posts.length === 0) { %>
+            <h1 class="mb-6 text-6xl opacity-40 font-semibold  select-none">No Posts Yet</h1>
+            <% } else { %>
+            <% user.posts.forEach((post) => { %>
+                <div class="box min-w-1/3 border-2 border-zinc-700 h-44 flex flex-col justify-between px-4 py-2">
+                    <div class="flex item-center flex-col">
+                        <h1 class="text-lg mb-2 text-blue-400">@<%= user.username %></h1>
+                        <p class="text-sm mb-2"><%= post.content%></p>
+                    </div>
+                    <div class="flex items-baseline gap-4">
+                        <a href="/edit/<%= post._id %>" class="text-sm mb-2 text-yellow-500 font-semibold cursor-pointer">Edit</a>
+                        <a href="/delete/<%= post._id %>" class="text-sm mb-2 text-red-500 font-semibold cursor-pointer">Delete</a>
+                    </div>
+                </div>
+            <% }) %>
+            <% } %>
+            
+        </div>
+        <div class="flex gap-4 mt-6">
+            <a href="/profile/update/<%= user._id %>" class="bg-zinc-900 border-yellow-500 border px-4 py-1 inline-block  rounded text-yellow-500">Edit Profile</a>
+            <a href="/logout" class="bg-zing-900 px-4 py-1 inline-block  rounded text-red-500 border border-red-500">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="bg-zinc-900 w-screen h-screen text-white p-10">
+        <h1 class="text-5xl mb-16 font-semibold">Login User</h1>
+        <form action="/login" method="post" class="mb-5">
+            <input class="bg-zinc-700 outline-none mr-4 px-4 py-1 rounded" type="email" name="email" placeholder="Enter your email" required>
+            <input class="bg-zinc-700 outline-none mr-4 px-4 py-1 rounded" type="password" name="password" placeholder="Enter your password" required>
+            <input class="bg-blue-500 outline-none mr-4 px-6 py-1 rounded" type="submit" value="Submit">
+        </form>
+        <a href="/" class="text-blue-500"><span class="text-white">Don't have account?</span> Register</a>
+        <% if(errorMessage){ %>
+            <p class="text-red-500 mt-5"><%= errorMessage %>.</p>
+        <% } %>
+    </div>
+</body>
+</html>

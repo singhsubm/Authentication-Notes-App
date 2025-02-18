@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title><%= user.username %></title>
+</head>
+<body class="overflow-x-hidden">
+    <div class="bg-zinc-900 text-white w-screen min-h-screen p-10 sm:p-12 lg:p-16 md:p-16">
+        <h1 class="text-5xl font-semibold mb-2">Edit Here</h1>
+        <form method="post" action="/edit/<%= post._id %>" class="mb-2 flex flex-col gap-2">
+            <input readonly type="text" value="@<%= user.username %>" class="w-full sm:w-full md:w-[70%] lg:w-1/3 outline-none border-zinc-700 border-2 rounded px-4 py-2 text-blue-400 font-semibold select-none mb-10">
+
+            <h1 class="text-2xl font-semibold">Previous Data</h1>
+
+            <textarea readonly class="resize-none w-full sm:w-full md:w-[70%] lg:w-1/3 outline-none border-zinc-700 text-zinc-300 border-2 rounded px-4 py-2 mb-10"><%= post.content %></textarea>
+
+            <h1 class="text-2xl font-semibold">New Data</h1>
+
+            <textarea name="content" id="content" class="resize-none w-full sm:w-full md:w-[70%] lg:w-1/3 outline-none border-zinc-700 border-2 rounded px-4 py-2 mb-2"><%= post.content %></textarea>
+            <div class="flex items-center gap-4">
+                <input class="px-6 py-1 bg-yellow-500 font-semibold text-black cursor-pointer w-fit rounded" type="submit" value="Update">
+                <a href="/profile" class="inline-block px-10 py-1 bg-zinc-400 font-semibold text-black cursor-pointer w-fit rounded">Back</a>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

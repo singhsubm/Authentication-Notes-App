@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Update</title>
+</head>
+<body class="overflow-x-hidden">
+    <div class="bg-zinc-900 text-white w-screen min-h-screen p-10 sm:p-12 lg:p-16 md:p-16">
+        <h1 class="text-4xl font-semibold mb-10">Edit Your Profile</h1>
+        <form action="/profile/update/<%= user._id %>" class="flex flex-col gap-4 w-1/4 items-center" method="post" enctype="multipart/form-data">
+            <div class="flex gap-4 items-center w-full">
+                <div class="w-15 h-12 overflow-hidden rounded">
+                    <img class="h-full w-full object-cover" src="/images/uploads/<%= user.image %>" alt="">
+                </div>
+                <input class="outline-none bg-transparent border-zinc-700 border-2 rounded px-6 py-2 w-full" type="text" name="fullname" value="<%= user.fullname %>" placeholder="Full Name">
+            </div>
+            <input class="bg-zinc-700 px-6 py-2 mb-4" type="file" name="image" >
+            <input class="bg-yellow-500 px-6 py-2 w-1/3 rounded text-black cursor-pointer" type="submit" value="Update">
+        </form>
+        </div>
+    </div>
+</body>
+</html>
